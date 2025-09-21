@@ -1,0 +1,26 @@
+# app-deployment.yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: todo-app
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: todo-app
+  template:
+    metadata:
+      labels:
+        app: todo-app
+    spec:
+      serviceAccountName: oadp-demo-sa
+      containers:
+      - name: todo-app
+        image: quay.io/rh-ee-keye/my-todo-app:amd64
+        env:
+        - name: AWS_REGION
+          value: "ap-southeast-1"
+        - name: DB_SECRET_NAME
+          value: "oadp-demo-db-creds"
+        ports:
+        - containerPort: 8080
