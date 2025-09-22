@@ -5,6 +5,7 @@ resources:
 - postgres-pvc.yaml
 - postgres-deployment.yaml
 - postgres-service.yaml
+- todo-serviceaccount.yaml
 - todo-deployment.yaml
 - todo-service.yaml
 - todo-route.yaml
